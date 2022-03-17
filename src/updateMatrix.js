@@ -1,12 +1,27 @@
-const toggleItem = (column, value) => {
+const updateMatrix = (matrix, column, value, i) => {
+  let flagged = false
 
-  column.forEach((element) => {
+  const updateCol = (element) => { //this changes only the first element that is a 0
+    if(flagged === false) {
     if (element === 0) {
-        element = value
-        return //does this break the function?
+        flagged=true
+        return value
+    } else {return element}
+  } else {return element}
+  }
+
+  const updated = column.map((element)=>{return updateCol(element)})
+
+  const newMatrix = matrix
+  
+    for(let j = 0; j<matrix.length; j++){
+      for(let k = 0; k<matrix.length+1; k++){
+        if(k===i){
+          newMatrix[j][k]=updated[j]
+        }
+      } 
     }
-  })
-  return  column //is this needed?
+  return newMatrix
 }
 
-  export default toggleItem
+  export default updateMatrix
