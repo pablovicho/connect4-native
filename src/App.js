@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Column from './Column';
 import updateMatrix from './updateMatrix';
+import whoWon from './win'
 
 //player 1 = 1
 //player 2 = 2
@@ -26,6 +27,7 @@ function App() {
     const col=column(i)
     useRowCol(updateMatrix(rowCol,col,player,i));
     usePlayer(player=>player === 1 ? 2 : 1)
+    whoWon(rowCol)
   }
 
   return (
@@ -36,7 +38,7 @@ function App() {
     {rowCol.map((col, index)=>{
       return <div className="col" key={index}>
             <button onClick={(e)=>HandleClick(e,index)}>
-                <Column playerCol={column(index)} i={index}/> 
+                <Column playerCol={column(index).reverse()} i={index}/> 
             </button>
       </div>
     })}
@@ -45,7 +47,7 @@ function App() {
 
     <div className="col">
             <button onClick={(e)=>HandleClick(e,6)}>
-                <Column playerCol={column(6)} i={6}/> 
+                <Column playerCol={column(6).reverse()} i={6}/> 
             </button>
       </div>
 
