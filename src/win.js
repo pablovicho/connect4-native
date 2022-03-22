@@ -1,4 +1,5 @@
 import diagonal from './diagonal'
+import reverseDiagonal from './reverseDiagonal';
 
 function whoWon(matrix) {
   function column(i) {
@@ -15,16 +16,16 @@ function whoWon(matrix) {
     let yCounter = 0;
     let xWin = false;
     let yWin = false;
-
     row.forEach((element) => {
-      if (xCounter >= 4) {xWin = true}
-      if (yCounter >= 4) {yWin = true}
-
       if (element === 1) {yCounter = 0;xCounter++;}
       if (element === 2) {xCounter = 0;yCounter++;}
+      if (element === 0) {xCounter=0; yCounter=0}
+      if (xCounter >= 4) {xWin = true}
+      if (yCounter >= 4) {yWin = true}
     });
 
     if (xWin) {win = 1} else if (yWin) {win = 2}
+    if (win > 0) {console.log(`${win} won!`)}
   }
 
   for (let i = 0; i < matrix.length + 1; i++) {
@@ -36,42 +37,23 @@ function whoWon(matrix) {
     let yWin = false;
 
     col.forEach((element) => {
-      if (xCounter >= 4) {xWin = true}
-      if (yCounter >= 4) {yWin = true}
-
       if (element === 1) {yCounter = 0;xCounter++}
       if (element === 2) {xCounter = 0;yCounter++}
+      if (element === 0) {xCounter=0; yCounter=0}
+      if (xCounter >= 4) {xWin = true}
+      if (yCounter >= 4) {yWin = true}
     })
 
     if (xWin) {win = 1} else if (yWin) {win = 2}
+    if (win > 0) {console.log(`${win} won!`)}
   }
 
   //diagonal check!!
-  diagonal(matrix,win) === 1 ? win=1 : diagonal(matrix,win) === 2 ? win=2 : win=0
+  diagonal(matrix) === 1 ? win=1 : diagonal(matrix,win) === 2 ? win=2 : win=0
+  if (win > 0) {console.log(`${win} won!`)}
 
-//reverse diagonal
-
-for (let j = 0; j < matrix.length; j++) {
-  //the horizontal axis
-  let xCounter = 0;
-  let yCounter = 0;
-  let xWin = false;
-  let yWin = false;
-
-  for (let k = 0; k < matrix.length + 1; k++) {
-    //the vertical axis
-    if (xCounter >= 4) {xWin = true}
-    if (yCounter >= 4) {yWin = true}
-
-    if (k + j < matrix.length) {
-        if(matrix[matrix.length-((k+j)+1)][matrix[0].length-k]===1){ 
-            yCounter=0;xCounter++}
-        if(matrix[matrix.length-((k+j)+1)][matrix[0].length-k]===2){
-            xCounter=0;yCounter++}
-  }
-  if (xWin) {win = 1} else if (yWin) {win = 2}
-}
-}
+  //reverse diagonal
+  reverseDiagonal(matrix) === 1 ? win=1 : reverseDiagonal(matrix,win) === 2 ? win=2 : win=0
 
   if (win > 0) {console.log(`${win} won!`)}
   return win;
