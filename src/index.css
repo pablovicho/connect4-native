@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #b7e1fc;
 }
 
 code {
@@ -40,7 +41,7 @@ code {
 }
 
 .board {
-  background-color: lightskyblue;
+  background-color: #87cefa;
   margin:10px;
   width: fit-content;
   height: fit-content;
@@ -48,4 +49,13 @@ code {
 
 .winner {
   align-self:flex-end
+}
+
+.player1 {
+  color: #fdfd96;
+  align-self: center;
+}
+
+.player2 {
+  color: lightcoral
 }
