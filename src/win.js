@@ -25,7 +25,7 @@ function whoWon(matrix) {
     });
 
     if (xWin) {win = 1} else if (yWin) {win = 2}
-    if (win > 0) {console.log(`${win} won!`)}
+    if (win > 0) {console.log(`${win} won!`);return win}
   }
 
   for (let i = 0; i < matrix.length + 1; i++) {
@@ -45,17 +45,17 @@ function whoWon(matrix) {
     })
 
     if (xWin) {win = 1} else if (yWin) {win = 2}
-    if (win > 0) {console.log(`${win} won!`)}
+    if (win > 0) {console.log(`${win} won!`);return win}
   }
 
   //diagonal check!!
   diagonal(matrix) === 1 ? win=1 : diagonal(matrix,win) === 2 ? win=2 : win=0
-  if (win > 0) {console.log(`${win} won!`)}
+  if (win > 0) {console.log(`${win} won!`);return win}
 
   //reverse diagonal
   reverseDiagonal(matrix) === 1 ? win=1 : reverseDiagonal(matrix,win) === 2 ? win=2 : win=0
 
-  if (win > 0) {console.log(`${win} won!`)}
+  if (win > 0) {console.log(`${win} won!`);return win}
   return win;
 
 }

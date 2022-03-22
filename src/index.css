@@ -13,11 +13,8 @@ code {
 }
 
 .yellow {
-  background-color: lightgoldenrodyellow;
-  -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
+  background-color: #fdfd96;
     border-radius: 100%;
-    transform: translate(-50%);
     border:solid;
     width: 70px;
     height: 70px;
@@ -26,10 +23,7 @@ code {
 
 .red {
   background-color: lightcoral;
-  -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
     border-radius: 100%;
-    transform: translate(-50%);
     border:solid;
     width: 70px;
     height: 70px;
@@ -38,10 +32,7 @@ code {
 
 .white {
   background-color: white;
-  -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
     border-radius: 100%;
-    transform: translate(-50%);
     border:solid;
     width: 70px;
     height: 70px;
@@ -50,7 +41,11 @@ code {
 
 .board {
   background-color: lightskyblue;
-  margin-left:10px;
+  margin:10px;
   width: fit-content;
   height: fit-content;
+}
+
+.winner {
+  align-self:flex-end
 }
