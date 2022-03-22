@@ -33,22 +33,22 @@ function App() {
   return (
     <main>
     <h1>Turn: {player}</h1>
-    <div style={{display:'flex', flexDirection:'row'}}>
+    <div className='board' style={{display:'flex', flexDirection:'row'}}>
 
     {rowCol.map((col, index)=>{
       return <div className="col" key={index}>
-            <button onClick={(e)=>HandleClick(e,index)}>
-                <Column playerCol={column(index).reverse()} i={index}/> 
-            </button>
+            <div onClick={(e)=>HandleClick(e,index)}>
+                <Column playerCol={column(index).reverse()}/> 
+            </div>
       </div>
     })}
 
     {/* this .map only iterates row times, not col times, so it misses the last column: */}
 
     <div className="col">
-            <button onClick={(e)=>HandleClick(e,6)}>
-                <Column playerCol={column(6).reverse()} i={6}/> 
-            </button>
+            <div onClick={(e)=>HandleClick(e,6)}>
+                <Column playerCol={column(6).reverse()} /> 
+            </div>
       </div>
 
       </div>
