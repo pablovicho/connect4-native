@@ -1,5 +1,4 @@
 body {
-  margin: 30px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -13,31 +12,69 @@ code {
     monospace;
 }
 
+@media only screen and (min-width: 600px) {
+  .yellow {
+    background-color: #fdfd96;
+      border-radius: 100%;
+      border:solid;
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+      border-color:gray;
+  }
+  
+  .red {
+    background-color: lightcoral;
+      border-radius: 100%;
+      border:solid;
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+      border-color:gray;
+  }
+
+  .white {
+    background-color: white;
+      border-radius: 100%;
+      border:solid;
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+      border-color:gray;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
 .yellow {
   background-color: #fdfd96;
     border-radius: 100%;
     border:solid;
-    width: 70px;
-    height: 70px;
+    width: 30px;
+    height: 30px;
     margin: 5px;
+    border-color:gray;
 }
 
 .red {
   background-color: lightcoral;
     border-radius: 100%;
     border:solid;
-    width: 70px;
-    height: 70px;
+    width: 30px;
+    height: 30px;
     margin: 5px;
+    border-color:gray;
 }
 
 .white {
   background-color: white;
     border-radius: 100%;
     border:solid;
-    width: 70px;
-    height: 70px;
+    width: 30px;
+    height: 30px;
     margin: 5px;
+    border-color:gray;
+}
 }
 
 .board {
@@ -48,7 +85,7 @@ code {
 }
 
 .winner {
-  align-self:flex-end
+  align-self:center
 }
 
 .player1 {
@@ -59,3 +96,71 @@ code {
 .player2 {
   color: lightcoral
 }
+
+.restart {
+  background-color: #f08080;
+  border-radius: 7px;
+  padding: 5px;
+  color: #FDF2F2;
+}
+
+main {
+  text-align: center;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  margin-top: 0px;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size:2rem;
+    margin:0px;
+    color:#D36E6E;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .title {
+    font-size:50px;
+    margin:0px;
+    color:#D36E6E;
+  }
+}
+
+.smallYellow {
+  background-color: #fdfd96;
+    border-radius: 100%;
+    border:solid;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-color:gray;
+}
+
+.smallRed {
+  background-color: lightcoral;
+    border-radius: 100%;
+    border:solid;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-color:gray;
+}
+
+.smallWhite {
+  background-color: white;
+    border-radius: 100%;
+    border:solid;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-color:gray;
+}
+
+/* 
+otra tipografía. el turno que no sea en negritas
+*/

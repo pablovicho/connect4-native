@@ -31,11 +31,26 @@ function App() {
   const Winner = () => {
     const colorClass = ["none", "player1", "player2"];
     return winner > 0 ? (
-      <div style={{marginLeft:'195px'}}>
+      <div>
         <h1 className={colorClass[winner]}>Player {winner} wins!</h1>
       </div>
     ) : null;
   };
+
+  const SmallCircle = () => {
+    const colorClass = ["smallWhite", "smallYellow", "smallRed"];
+
+    return (
+        <div className={colorClass[player]}></div>
+    );
+  }
+
+  const Restart = (e) => {
+    e.preventDefault();
+    useRowCol(initialMatrix)
+    usePlayer(1)
+    useWinner(0)
+  }
 
   const HandleClick = (e, i) => {
     e.preventDefault();
@@ -48,17 +63,22 @@ function App() {
   return (
     <main>
       {winner===0 ? (
-        <div  style={{ display: "flex", flexDirection: "row", marginLeft:'30px' }}>
+        <>
+        <h1 className='title'>Connect4!</h1>
+        <div style={{ display: "flex", flexDirection: "row", alignItems:'center', margin:'0px', color:'gray' }}>
         <h1>Turn:</h1>
-        <Circle player={player} />
-        <h1 style={{marginLeft:'90px', fontSize:'2rem'}}>Connect4!</h1>
-        </div>)
+        <SmallCircle/>
+        </div>
+        </>)
         :
+        <>
         <Winner className="winner" />
+        <button className='restart' onClick={(e) => Restart(e)}>Restart!</button>
+        </>
       }
         
       <div className="board" style={{ display: "flex", flexDirection: "row" }}>
-        {rowCol.map((col, index) => {
+        {winner===0? rowCol.map((col, index) => {
           return (
             <div className="col" key={index}>
               <div onClick={(e) => HandleClick(e, index)}>
@@ -66,14 +86,30 @@ function App() {
               </div>
             </div>
           );
-        })}
+        }):
+        rowCol.map((col, index) => {
+          return (
+            <div className="col" key={index}>
+              <div>
+                <Column playerCol={column(index).reverse()} />
+              </div>
+            </div>
+          );
+        })
+        }
 
         {/* this .map only iterates row times, not col times, so it misses the last column: */}
 
         <div className="col">
+        {winner === 0 ? 
           <div onClick={(e) => HandleClick(e, 6)}>
             <Column playerCol={column(6).reverse()} />
           </div>
+          :
+          <div>
+            <Column playerCol={column(6).reverse()} />
+          </div>
+        }
         </div>
       </div>
     </main>
