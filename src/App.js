@@ -3,7 +3,6 @@ import "./App.css";
 import Column from "./Column";
 import updateMatrix from "./updateMatrix";
 import whoWon from "./win";
-import Circle from "./Circle";
 
 //player 1 = 1
 //player 2 = 2
