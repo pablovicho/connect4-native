@@ -6,13 +6,14 @@ const updateMatrix = (matrix, column, value, i) => {
     if (element === 0) {
         flagged=true
         return value
-    } else {return element}
-  } else {return element}
+    }
+  }
+  return element
   }
 
   const updated = column.map((element)=>{return updateCol(element)})
 
-  const newMatrix = matrix
+  const newMatrix = JSON.parse(JSON.stringify(matrix))
   
     for(let j = 0; j<matrix.length; j++){
       for(let k = 0; k<matrix.length+1; k++){
