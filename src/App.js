@@ -47,24 +47,22 @@ function App() {
 
   return (
     <main>
+      
       {winner === 0 ? (
         <>
-          <h1 className="title">Connect4!</h1>
+        <div className="upThingy">
           <div className="playerTurn">
             <h1>Turn:</h1>
             <SmallCircle player={player}/>
           </div>
-          <button className="restart" onClick={(e) => Restart(e)}>
-            Restart!
-          </button>
+          </div>
         </>
       ) : (
         <>
+        <div className="upThingy">
           <Winner className="winner" winner={winner} />
-          <button className="restart" onClick={(e) => Restart(e)}>
-            Restart!
-          </button>
-        </>
+        </div>
+          </>
       )}
 
       <div className="matrix">
@@ -90,6 +88,12 @@ function App() {
           }).reverse()
           }
       </div>
+      <div className="downThingy">
+      <h1 className="title">Connect4</h1>
+      </div>
+      <button className="restart" onClick={(e) => Restart(e)}>
+            Restart
+          </button>
     </main>
   );
 }

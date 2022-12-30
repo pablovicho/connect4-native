@@ -4,7 +4,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #b7e1fc;
+  background-color: #CDFCF6;
 }
 
 code {
@@ -27,24 +27,25 @@ main {
 }
 
 .player1 {
-  color: #fdfd96;
+  color: #fdca40;
   align-self: center;
 }
 
 .player2 {
-  color: lightcoral;
+  color: #df2935;
   align-self: center;
 }
 
 .restart {
-  background-color: #f08080;
+  background-color: #023047;
   border-radius: 7px;
   padding: 5px;
   color: #fdf2f2;
+  font-size: 20px;
 }
 
 .smallYellow {
-  background-color: #fdfd96;
+  background-color: #fdca40;
   border-radius: 100%;
   border: solid;
   width: 30px;
@@ -54,7 +55,7 @@ main {
 }
 
 .smallRed {
-  background-color: lightcoral;
+  background-color: #df2935;
   border-radius: 100%;
   border: solid;
   width: 30px;
@@ -78,7 +79,7 @@ main {
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 10px;
-  background-color: #87cefa;
+  background-color: #43bccd;
   width: fit-content;
   height: fit-content;
   margin: 10px;
@@ -89,7 +90,30 @@ main {
   flex-direction: row;
   align-items: center;
   margin: 0px;
-  color: gray;
+  color: #023047;
+  padding-top: 0px;
+}
+
+.upThingy {
+  background-color: white;
+  border-radius: 15px;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-style: solid;
+  border-color: #43bccd;
+}
+
+.downThingy {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 35px;
+  margin-top: 25px;
+  border-style: solid;
+  border-color: #43bccd;
+  border-width: 0.5px;
 }
 
 @keyframes rebota {
@@ -109,12 +133,12 @@ main {
   }
 
   .yellow {
-    background-color: #fdfd96;
+    background-color: #fdca40;
     animation: rebota 1s ease-in-out;
   }
 
   .red {
-    background-color: lightcoral;
+    background-color: #df2935;
     animation: rebota 1s ease-in-out;
   }
 
@@ -125,7 +149,7 @@ main {
   .title {
     font-size: 50px;
     margin: 0px;
-    color: #d36e6e;
+    color: #023047;
   }
 }
 
@@ -140,12 +164,12 @@ main {
   }
 
   .yellow {
-    background-color: #fdfd96;
+    background-color: #fdca40;
     animation: rebota 1s ease-in-out;
   }
 
   .red {
-    background-color: lightcoral;
+    background-color: #df2935;
     animation: rebota 1s ease-in-out;
   }
 
@@ -156,7 +180,7 @@ main {
   .title {
     font-size: 2rem;
     margin: 0px;
-    color: #d36e6e;
+    color: #023047;
   }
 }
 
