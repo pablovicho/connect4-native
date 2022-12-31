@@ -109,11 +109,24 @@ main {
   background-color: white;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   margin-top: 25px;
   border-style: solid;
   border-color: #43bccd;
   border-width: 0.5px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-self: flex-end;
+  align-items: center;
+}
+
+.logo {
+  width: auto;
+  height: 30px;
 }
 
 @keyframes rebota {

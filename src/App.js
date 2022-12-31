@@ -94,6 +94,15 @@ function App() {
       <button className="restart" onClick={(e) => Restart(e)}>
             Restart
           </button>
+
+          <div className="contact">
+          <a href="https://github.com/pablovicho/connect4">
+          <img className="logo" alt="github" src="github.png" style={{height:"45px"}}></img>
+          </a>
+          <a href="https://www.linkedin.com/in/pablovicho/">
+          <img className="logo" alt="linkedin" src="linkedin.png"></img>
+          </a>
+          </div>
     </main>
   );
 }
