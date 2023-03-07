@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { usePlayerHook } from "./utils/usePlayer";
+
 import "./App.css";
 
 import Circle from "./components/Circle";
 import SmallCircle from "./components/SmallCircle";
-import Winner from "./components/Winner";
+import { PopUpMessage } from "./winCheck/popUpMessage";
 
 import updateMatrix from "./updateMatrix";
 import whoWon from "./winCheck/win";
+
 import initialMatrix from "./utils/initialMatrix";
 import column from "./utils/column";
 
@@ -15,7 +18,7 @@ import column from "./utils/column";
 //no player = 0
 
 function App() {
-  const [player, usePlayer] = useState(1);
+  const [player, usePlayer] = usePlayerHook(1);
   const [matrix, useMatrix] = useState(initialMatrix);
   let [winner, useWinner] = useState(0);
 
@@ -29,14 +32,14 @@ function App() {
   const Update = (i) => {
     const col = column(matrix, i);
     useMatrix(updateMatrix(matrix, col, player, i));
-  }
+  };
 
   const CheckWin = () => {
     useWinner(whoWon(matrix));
-  }
+  };
 
   useEffect(() => {
-    CheckWin()
+    CheckWin();
   }, [matrix]);
 
   const HandleClick = (e, i) => {
@@ -47,62 +50,55 @@ function App() {
 
   return (
     <main>
-      
-      {winner === 0 ? (
-        <>
-        <div className="upThingy">
-          <div className="playerTurn">
-            <h1>Turn:</h1>
-            <SmallCircle player={player}/>
-          </div>
-          </div>
-        </>
-      ) : (
-        <>
-        <div className="upThingy">
-          <Winner className="winner" winner={winner} />
+      <div className="upThingy">
+        <div className="playerTurn">
+          <h1>Turn:</h1>
+          <SmallCircle player={player} />
         </div>
-          </>
-      )}
+      </div>
+
+      {winner > 0 && 
+      <button onClick={(e) => Restart(e)}>
+      <PopUpMessage winner={winner} />
+      </button>}
 
       <div className="matrix">
-        {winner === 0
-          ? matrix.map((row, index) => {
-              return row.map((element, i) => {
-                return (
-                  <div key={`${index},${i}`} onClick={(e) => HandleClick(e, i)}>
-                    <Circle player={element}/>
-                  </div>
-                );
-              });
-            }).reverse()
-          : 
-          matrix.map((row, index) => {
-            return row.map((element, i) => {
-              return (
-                <div key={`${index},${i}`}>
-                  <Circle player={element}/>
-                </div>
-              );
-            });
-          }).reverse()
-          }
+        {matrix
+              .map((row, index) => {
+                return row.map((element, i) => {
+                  return (
+                    <div
+                      key={`${index},${i}`}
+                      onClick={(e) => HandleClick(e, i)}
+                    >
+                      <Circle player={element} />
+                    </div>
+                  );
+                });
+              })
+              .reverse()}
+
       </div>
       <div className="downThingy">
-      <h1 className="title">Connect4</h1>
+        <h1 className="title">Connect4</h1>
       </div>
       <button className="restart" onClick={(e) => Restart(e)}>
-            Restart
-          </button>
+        Restart
+      </button>
 
-          <div className="contact">
-          <a href="https://github.com/pablovicho/connect4">
-          <img className="logo" alt="github" src="github.png" style={{height:"45px"}}></img>
-          </a>
-          <a href="https://www.linkedin.com/in/pablovicho/">
+      <div className="contact">
+        <a href="https://github.com/pablovicho/connect4">
+          <img
+            className="logo"
+            alt="github"
+            src="github.png"
+            style={{ height: "45px" }}
+          ></img>
+        </a>
+        <a href="https://www.linkedin.com/in/pablovicho/">
           <img className="logo" alt="linkedin" src="linkedin.png"></img>
-          </a>
-          </div>
+        </a>
+      </div>
     </main>
   );
 }
