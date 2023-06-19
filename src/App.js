@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { usePlayerHook } from "./utils/usePlayer";
+import React, { useEffect } from "react";
+import useStore from "./utils/store";
 
 import "./App.css";
 
 import Circle from "./components/Circle";
 import SmallCircle from "./components/SmallCircle";
 import { PopUpMessage } from "./winCheck/popUpMessage";
-
-import updateMatrix from "./updateMatrix";
-import whoWon from "./winCheck/win";
-
-import initialMatrix from "./utils/initialMatrix";
 import column from "./utils/column";
 
 //player 1 = 1
@@ -18,48 +13,56 @@ import column from "./utils/column";
 //no player = 0
 
 function App() {
-  const [player, usePlayer] = usePlayerHook(1);
-  const [matrix, useMatrix] = useState(initialMatrix);
-  let [winner, useWinner] = useState(0);
+  const player = useStore((state) => state.player)
+  const matrix = useStore((state) => state.matrix)
+  const changePlayer = useStore((state) => state.changePlayer)
+  const resetPlayer = useStore((state) => state.resetPlayer)
+  const resetWinner = useStore((state) => state.resetWinner)
+  const checkWinner = useStore((state) => state.checkWinner)
+  const resetMatrix = useStore((state) => state.resetMatrix)
+  const updateMatrix = useStore((state) => state.matrixUpdater)
+  const player1Win = useStore((state) => state.player1Win)
+  const player2Win = useStore((state) => state.player2Win)
+  const winner = useStore((state) => state.winner)
+  const player1 = useStore((state) => state.player1)
+  const player2 = useStore((state) => state.player2)
 
   const Restart = (e) => {
     e.preventDefault();
-    useMatrix(initialMatrix);
-    usePlayer(1);
-    useWinner(0);
-  };
-
-  const Update = (i) => {
-    const col = column(matrix, i);
-    useMatrix(updateMatrix(matrix, col, player, i));
-  };
-
-  const CheckWin = () => {
-    useWinner(whoWon(matrix));
+    if(winner === 1) player1Win();
+    if(winner === 2) player2Win();
+    resetMatrix();
+    resetPlayer();
+    resetWinner();
   };
 
   useEffect(() => {
-    CheckWin();
+    checkWinner();
   }, [matrix]);
 
   const HandleClick = (e, i) => {
     e.preventDefault();
-    Update(i);
-    usePlayer((player) => (player === 1 ? 2 : 1));
+    const col = column(matrix, i);
+    updateMatrix(col, player, i)
+    changePlayer();
   };
 
   return (
     <main>
-      <div className="upThingy">
+      <div className="upThingy" style={{display: 'flex', flexDirection: 'row'}}>
         <div className="playerTurn">
           <h1>Turn:</h1>
-          <SmallCircle player={player} />
+          <SmallCircle style={{marginRight: '10px'}}/>
+        </div>
+        <div style={{backgroundColor: '#43bccd', borderRadius: '0 13px 13px 0'}}>
+          <h3 style={{marginBottom: '0px', marginLeft: '10px', marginRight: '10px'}}>Player 1: {player1}</h3>
+          <h3 style={{marginTop: '0px', marginLeft: '10px', marginRight: '10px'}}>Player 2: {player2}</h3>
         </div>
       </div>
 
       {winner > 0 && 
       <button onClick={(e) => Restart(e)}>
-      <PopUpMessage winner={winner} />
+      <PopUpMessage />
       </button>}
 
       <div className="matrix">
