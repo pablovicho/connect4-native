@@ -1,4 +1,4 @@
-# This is a Connect 4 game made from scratch in React
+# This is a Connect 4 game made from scratch in React (state management with Zustand)
 
 **Known issues:** <br>
-*30-March-22*: - Can't win with a diagonal using the last column
+*20-Jun-23*: - Animation overlap when a player wins
