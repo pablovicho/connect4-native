@@ -1,4 +1,4 @@
-const updateMatrix = (matrix, column, value, i) => {
+const updateMatrix = (matrix, column, value, row) => {
   let flagged = false
 
   const updateCol = (element) => { //this changes only the first element that is a 0
@@ -17,7 +17,7 @@ const updateMatrix = (matrix, column, value, i) => {
   
     for(let j = 0; j<matrix.length; j++){
       for(let k = 0; k<matrix.length+1; k++){
-        if(k===i){
+        if(k===row){
           newMatrix[j][k]=updated[j]
         }
       } 

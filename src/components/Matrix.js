@@ -3,41 +3,51 @@ import useStore from "../utils/store";
 import column from "../utils/column";
 
 const Matrix = () => {
-  const winner = useStore((state) => state.winner)
-  const matrix = useStore((state) => state.matrix)
-  const player = useStore((state) => state.player)
-  const updateMatrix = useStore.matrixUpdater
+  const winner = useStore((state) => state.winner);
+  const matrix = useStore((state) => state.matrix);
+  const player = useStore((state) => state.player);
+  const updateMatrix = useStore((state) => state.matrixUpdater);
+  const changePlayer = useStore((state) => state.changePlayer);
+  const checkWinner = useStore((state) => state.checkWinner);
 
-  const Update = (e, i) => {
+  const HandleClick = (e, i) => {
     e.preventDefault();
     const col = column(matrix, i);
-    updateMatrix(matrix, col, player, i);
+    updateMatrix(col, player, i);
+    checkWinner();
+    changePlayer();
   };
-  
-  return <div className="matrix">
-  {winner === 0
-    ? matrix.map((row, index) => {
-        return row.map((element, i) => {
-          return (
-            <div key={`${index},${i}`} onClick={(e) => Update(e, i)}>
-              <Circle player={element}/>
-            </div>
-          );
-        });
-      }).reverse()
-    : 
-    matrix.map((row, index) => {
-      return row.map((element, i) => {
-        return (
-          <div key={`${index},${i}`}>
-            <Circle player={element}/>
-          </div>
-        );
-      });
-    }).reverse()
-    }
-</div>
 
-}
+  return (
+    <div className="matrix">
+      {winner === 0
+        ? matrix
+            .map((row, index) => {
+              return row.map((element, i) => {
+                return (
+                  <div key={`${index},${i}`} onClick={(e) => HandleClick(e, i)}>
+                    <Circle player={element} />
+                  </div>
+                );
+              });
+            })
+            .reverse()
+        
+            : 
+        
+        matrix
+            .map((row, index) => {
+              return row.map((element, i) => {
+                return (
+                  <div key={`${index},${i}`}>
+                    <Circle player={element} />
+                  </div>
+                );
+              });
+            })
+            .reverse()}
+    </div>
+  );
+};
 
-export default Matrix
+export default Matrix;
