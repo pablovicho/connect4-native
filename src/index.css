@@ -145,6 +145,10 @@ main {
     border-color: gray;
   }
 
+  .no-animate {
+    animation: none !important;
+  }
+
   .yellow {
     background-color: #fdca40;
     animation: rebota 1s ease-in-out;
@@ -178,12 +182,10 @@ main {
 
   .yellow {
     background-color: #fdca40;
-    animation: rebota 1s ease-in-out;
   }
 
   .red {
     background-color: #df2935;
-    animation: rebota 1s ease-in-out;
   }
 
   .white {
