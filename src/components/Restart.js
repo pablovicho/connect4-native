@@ -1,4 +1,5 @@
 import useStore from "../utils/store";
+import { View, StyleSheet } from "react-native";
 
 function Restart() {
   const resetPlayer = useStore((state) => state.resetPlayer);
@@ -19,7 +20,7 @@ function Restart() {
   };
 
   return (
-    <main style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+    <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
       <button className="restart" onClick={(e) => Restart(e)}>
         Restart
       </button>
@@ -33,8 +34,10 @@ function Restart() {
       >
         Reset Score
       </button>
-    </main>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({});
 
 export default Restart;

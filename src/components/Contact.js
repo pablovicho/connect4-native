@@ -1,19 +1,21 @@
+import { View, StyleSheet } from 'react-native';
+
 function Contact() {
     return(
-        <div className="contact">
+        <View className="contact">
         <a href="https://github.com/pablovicho/connect4" target="_blank" rel="noreferrer">
-          <img
+          <img style={[]} src={"github.png"} alt="github"
             className="logo"
-            alt="github"
-            src="github.png"
-            style={{ height: "45px" }}
+            // style={{ height: "45px" }}
           ></img>
         </a>
         <a href="https://www.linkedin.com/in/pablovicho/" target="_blank" rel="noreferrer">
           <img className="logo" alt="linkedin" src="linkedin.png"></img>
         </a>
-      </div>
+      </View>
     )
 }
+
+const styles = StyleSheet.create({});
 
 export default Contact

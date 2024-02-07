@@ -1,11 +1,15 @@
-import React from 'react'
-import Circle from './Circle'
+import React from 'react';
+import { View } from 'react-native';
+import Circle from './Circle';
 
 export default function Column(props) {
-  const {playerCol} = props
-      
-      return playerCol.map((element, index)=>{
-        return <div key={index}>  
-                <Circle player={element} />
-               </div>
-          })}
+  const {playerCol} = props;
+
+  return playerCol.map((element, index) => {
+    return (
+      <View key={index}>
+        <Circle player={element} />
+      </View>
+    );
+  }); 
+}

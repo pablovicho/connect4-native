@@ -1,6 +1,7 @@
 import Circle from "./Circle";
 import useStore from "../utils/store";
 import column from "../utils/column";
+import { View, StyleSheet } from "react-native";
 
 const Matrix = () => {
   const winner = useStore((state) => state.winner);
@@ -19,7 +20,7 @@ const Matrix = () => {
   };
 
   return (
-    <div className="matrix">
+    <View className="matrix">
       {matrix
         .map((row, index) => {
           return row.map((element, i) => {
@@ -35,8 +36,10 @@ const Matrix = () => {
           });
         })
         .reverse()}
-    </div>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({});
 
 export default Matrix;

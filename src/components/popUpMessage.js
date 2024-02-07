@@ -1,4 +1,5 @@
 import useStore from "../utils/store";
+import { View, StyleSheet } from "react-native";
 
 
 export function PopUpMessage () {
@@ -23,7 +24,7 @@ export function PopUpMessage () {
   };
 
   return (
-    <div style={{position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <div style={{backgroundColor: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0px 3px 16px rgba(0,0,0,0.5)', textAlign: 'center'}}>
         <h2 style={{fontSize: '1.2rem', marginBottom: '10px', padding: '10px', borderRadius: '8px', backgroundColor: colorClass[winner]}}>
           Player {winner} wins!
@@ -34,6 +35,6 @@ export function PopUpMessage () {
         > Restart
         </button>
       </div>
-    </div>
+    </View>
   )
 };
